@@ -1,0 +1,33 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+}
+
+<div class="row">
+    <div class="col-md-12">
+        <h1>Office 365 group connector demo</h1>
+        <p>Office 365 Connectors are a great way to get useful information and content into your Office 365 Groups or Microsoft Teams.</p>
+        <p><a href="https://dev.outlook.com/Connectors" class="btn btn-primary btn-lg">Learn more &raquo;</a></p>
+    </div>
+    <div class="col-md-12">
+        <h1>Connect to an Office 365 group</h1>
+        <p>Click this button to allow this application to send data to your Office 365 group.</p>
+        <!-- here comes the snippet from https://outlook.office.com/connectors/publish -->
+        <a href="https://outlook.office.com/connectors/Connect?<YOUR-BUTTON-CODE>&callback_url=http://localhost:52023/Home/Callback">
+            <img src="https://o365connectors.blob.core.windows.net/images/ConnectToO365Button.png" alt="Connect to Office 365" />
+        </a>
+    </div>
+    <div class="col-md-12">
+        <h1>Send message to Office 365 group</h1>
+        <p>Click this button to send a message to the support group.</p>
+        <p>
+            @using (@Html.BeginForm("Send", "Home", FormMethod.Post))
+            {
+                <input type="submit" value=" Send " /><br />
+                if (null != Model?.Result)
+                {
+                    <label>Result: </label><span>@Model.Result</span>
+                }
+            }
+        </p>
+    </div>
+</div>
